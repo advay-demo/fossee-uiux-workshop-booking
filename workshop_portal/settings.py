@@ -132,7 +132,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = 'workshop_app/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "workshop_app", "static"),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGIN_URL = '/workshop/login/'
 
