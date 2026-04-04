@@ -1,53 +1,359 @@
 {% extends 'workshop_app/base.html' %}
-
+{% load static %}
 {% block title %}
-    Login
+Login
+{% endblock %}
+
+{% block extra-dependencies %}
+<style>
+    /* Dribbble Style Light Theme Login */
+    body {
+        position: relative;
+    }
+
+    .login-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .login-card {
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(18px);
+
+        box-shadow:
+            0 30px 70px rgba(0, 0, 0, 0.08),
+            0 10px 25px rgba(99, 102, 241, 0.08);
+
+    }
+
+    .login-card-body {
+        padding: 4rem 3.5rem;
+
+    }
+
+    .login-card form .form-group label {
+        font-weight: 500;
+        color: #64748b;
+        margin-bottom: 0.6rem;
+        font-size: 0.95rem;
+        display: inline-block;
+    }
+
+    .login-card form .form-group input {
+        width: 100%;
+        padding: 0.95rem 1.25rem;
+        font-size: 1rem;
+        color: #334155;
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        transition: all 0.25s ease;
+    }
+
+    .login-card form .form-group input:focus {
+        background-color: #ffffff;
+        border-color: #a5b4fc;
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    }
+
+    .btn-login {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        border: none;
+        padding: 1rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        border-radius: 14px;
+        width: 100%;
+        margin-top: 1.5rem;
+        color: #fff;
+        transition: all 0.25s ease;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(99, 102, 241, 0.35);
+    }
+
+    .auth-links {
+        text-align: center;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .auth-links a {
+        color: #6366f1;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s;
+        font-size: 0.95rem;
+    }
+
+    .auth-links a:hover {
+        color: #4f46e5;
+    }
+
+    .dropdown-divider {
+        margin: 2.5rem 0 1.5rem 0;
+        border-top: 1px solid #f1f5f9;
+    }
+
+    .alert-danger {
+        border-radius: 12px;
+        border: none;
+        background: #fee2e2;
+        color: #ef4444;
+        font-weight: 500;
+    }
+
+    .form-group input {
+        transition: all 0.2s ease;
+    }
+
+    .form-group input:hover {
+        border-color: #c7d2fe;
+    }
+
+    .highlight-text {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .password-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .forgot-link {
+        font-size: 0.85rem;
+        color: #6366f1;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .forgot-link:hover {
+        text-decoration: underline;
+    }
+
+    .signup-text {
+        color: #64748b;
+        /* normal grey text */
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    .signup-link {
+        color: #6366f1;
+        /* your theme color */
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .signup-link:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .login-card-body {
+            padding: 2.5rem 2rem;
+        }
+    }
+
+    /* ===== LOGIN SPLIT ===== */
+    .login-layout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        min-height: calc(100vh - 100px);
+        padding: 20px;
+    }
+
+    /* LEFT SIDE */
+    .login-left {
+        flex: 1;
+        max-width: 420px;
+    }
+
+    /* RIGHT SIDE BOX */
+    .logo-box {
+        flex: 1;
+
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+
+        padding: 40px 30px;
+        border-radius: 24px;
+
+        box-shadow:
+            0 25px 50px rgba(0, 0, 0, 0.06),
+            0 10px 20px rgba(0, 0, 0, 0.04);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+
+        max-width: 320px;
+    }
+
+    /* LOGOS */
+    .logo {
+        max-width: 200px;
+        height: auto;
+    }
+
+    /* IIT smaller for balance */
+    .logo.iit {
+        max-width: 170px;
+    }
+
+    .logo-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+
+        border-left: 1px solid #e2e8f0;
+        padding-left: 30px;
+    }
+
+    /* LOGO SIZING */
+    .logo-section img:first-child {
+        width: 160px;
+        /* fossee */
+    }
+
+    .logo-section img:last-child {
+        width: 70px;
+        /* iitb */
+        opacity: 0.85;
+    }
+
+    .logo-section img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+
+
+
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+        .login-layout {
+            flex-direction: column;
+        }
+
+        .logo-box {
+            display: none;
+            /* hide on mobile */
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .login-card {
+            flex-direction: column !important;
+            padding: 25px;
+        }
+
+        .logo-section {
+            border-left: none;
+            border-top: 1px solid #e2e8f0;
+
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-left: 0;
+
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .logo-section img:first-child {
+            width: 120px;
+        }
+
+        .logo-section img:last-child {
+            width: 55px;
+        }
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-md-offset-6">
-                <div class="card">
-                    <div class="card-body">
-                        <form class="px-3 py-3" method="post">
+<div class="container login-wrapper">
+    <div class="row justify-content-center w-100">
+        <div class="col-12 col-md-10 col-lg-8">
+
+            <!-- SINGLE COMBINED CARD -->
+            <div class="login-card d-flex">
+
+                <!-- LEFT: LOGIN -->
+                <div style="flex: 1; padding-right: 30px;">
+
+                    <h2 style="margin-bottom:6px;">
+                        <span style="font-weight:700;">Welcome</span>
+                        <span class="highlight-text">back!</span>
+                    </h2>
+
+                    <p style="color:#64748b; margin-bottom:22px;">
+                        Sign in to continue
+                    </p>
+
+                    <form method="post">
                         {% csrf_token %}
-                        {% if form.errors %}
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <div class="alert alert-dismissible alert-danger">
-                                        <button type="button" class="close" data-dismiss="alert">
-                                            <i class="fa fa-close"></i>
-                                        </button>
-                                        <strong>{{ error|escape }}</strong>
-                                    </div>
-                                {% endfor %}
-                            {% endfor %}
-                            {% for error in form.non_field_errors %}
-                                <div class="alert alert-dismissible alert-danger">
-                                    <button type="button" class="close" data-dismiss="alert">
-                                        <i class="fa fa-close"></i>
-                                    </button>
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        <div class="form-group">
-                          <label for="id_username">Username</label>
-                          {{ form.username }}
+
+                        <div class="form-group mb-3">
+                            <label>Username</label>
+                            {{ form.username }}
                         </div>
-                        <div class="form-group">
-                          <label for="id_password">Password</label>
-                          {{ form.password }}
+
+                        <div class="form-group mb-4">
+                            <div class="password-row">
+                                <label>Password</label>
+                                <a href="{% url 'password_reset' %}" class="forgot-link">
+                                    Forgot password?
+                                </a>
+                            </div>
+                            {{ form.password }}
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-                        </form>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'workshop_app:register' %}">New around here? Sign up</a>
-                        <a class="dropdown-item" href="{% url 'password_reset' %}">Forgot password?</a>
-                    </div>
-                </div>  
+
+                        <button type="submit">Sign in</button>
+                    </form>
+
+                    <div class="dropdown-divider"></div>
+
+                    <p class="signup-text">
+                        New around here?
+                        <a href="{% url 'workshop_app:register' %}" class="signup-link">
+                            Sign up
+                        </a>
+                    </p>
+                </div>
+
+                <!-- RIGHT: LOGOS -->
+                <div class="logo-section"
+                    style="flex: 1; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:30px; border-left:1px solid #e2e8f0; padding-left:30px;">
+
+                    <img src="{% static 'workshop_app/img/fossee.png' %}" style="width:240px;">
+                    <img src="{% static 'workshop_app/img/iitb.png' %}" style="width:180px; opacity:0.9;">
+
+                </div>
+
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
