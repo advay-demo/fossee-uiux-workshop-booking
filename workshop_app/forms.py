@@ -14,9 +14,20 @@ except ImportError:
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .send_mails import generate_activation_key
+from django.contrib.auth.forms import PasswordResetForm
+
+
 
 UNAME_CHARS = letters + "._" + digits
 PWD_CHARS = letters + punctuation + digits
+
+class CustomPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({
+            'placeholder': 'Email address',
+            'class': 'form-input'
+        })
 
 
 class UserRegistrationForm(forms.Form):
