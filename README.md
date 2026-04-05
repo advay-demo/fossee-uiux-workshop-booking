@@ -187,9 +187,11 @@ python manage.py runserver
 ---
 
 ## 📬 Submission
+Name: Advay Bhagat
+Institution Name: VIT Bhopal
+Email Id: ad14bhagat@gmail.com
 
-Repository link: *(Add your GitHub repo link here)*
-
+Repository link: *https://github.com/advay-demo/workshop_booking*
 ---
 
 ## 💡 Final Note
