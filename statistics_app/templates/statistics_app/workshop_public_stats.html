@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <div>From date: {{form.from_date}}</div>
                         <div>To date: {{form.to_date}}</div>
-                        <div>Workshop: {{form.workshop_type}}</div>
+                        <div>Workshop_app: {{form.workshop_type}}</div>
                         <div>State: {{form.state}}</div>
                         <div>{{form.sort.help_text}}: {{form.sort}}</div>
                         {% if request.user.is_authenticated %}
@@ -75,16 +75,16 @@
                 </thead>
                 {% csrf_token %}
                 {% for workshop in objects %}
-                    <tbody>
-                        <tr>
-                            <td>{{ forloop.counter0|add:objects.start_index}}</td>
-                            <td>{{ workshop.coordinator.get_full_name | capfirst }}</td>
-                            <td>{{ workshop.coordinator.profile.institute | capfirst }}</td>
-                            <td>{{ workshop.instructor.get_full_name | capfirst }}</td>
-                            <td>{{ workshop.workshop_type.name }}</td>
-                            <td>{{ workshop.date | date}}</td>
-                        </tr>
-                    </tbody>
+                <tbody>
+                    <tr>
+                        <td>{{ forloop.counter0|add:objects.start_index}}</td>
+                        <td>{{ workshop.coordinator.get_full_name | capfirst }}</td>
+                        <td>{{ workshop.coordinator.profile.institute | capfirst }}</td>
+                        <td>{{ workshop.instructor.get_full_name | capfirst }}</td>
+                        <td>{{ workshop.workshop_type.name }}</td>
+                        <td>{{ workshop.date | date}}</td>
+                    </tr>
+                </tbody>
                 {% endfor %}
             </table>
             {% include "statistics_app/paginator.html" %}
@@ -98,21 +98,21 @@
 </div>
 
 <script type="text/javascript">
-    var state_labels = {{ws_states|safe}};
-    var state_data = {{ws_count|safe}};
-    var type_labels = {{ws_type|safe}};
-    var type_data = {{ws_type_count|safe}};
+    var state_labels = {{ ws_states| safe}};
+    var state_data = {{ ws_count| safe}};
+    var type_labels = {{ ws_type| safe}};
+    var type_data = {{ ws_type_count| safe}};
     var chart;
-    $("#state_graph").on("click", function() {
+    $("#state_graph").on("click", function () {
         show_graph(state_labels, state_data, "State wise workshops");
     });
-    $("#type_graph").on("click", function() {
+    $("#type_graph").on("click", function () {
         show_graph(type_labels, type_data, "Type wise workshops");
     });
 
     function show_graph(labels, data, graph_name, chart_name) {
         var ctx = document.getElementById('myChart').getContext('2d');
-        if(chart) chart.destroy();
+        if (chart) chart.destroy();
         chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'bar',
