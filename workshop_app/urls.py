@@ -23,7 +23,8 @@ app_name = "workshop_app"
 
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^home/$', views.home, name='home'),
+    url(r'^$', views.home, name='index'),
     url(r'^register/$', views.user_register, name="register"),
     url(r'^activate_user/(?P<key>.+)$', views.activate_user),
     url(r'^activate_user/$', views.activate_user),
