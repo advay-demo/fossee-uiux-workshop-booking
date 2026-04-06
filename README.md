@@ -10,6 +10,14 @@ The redesign prioritizes clarity, accessibility, and a modern user experience, e
 
 ## 🚀 Features & Improvements
 
+### 🏠 Home Page
+
+* Introduced a dedicated landing page instead of directly showing the login screen
+* Designed a modern hero section with clear call-to-action buttons
+* Added side visual panels for better engagement and branding
+* Improved first impression and user onboarding experience
+* Enhanced navigation with a unified "Login / Sign Up" button
+
 ### 🔐 Login Page
 
 * Redesigned layout with centered card UI
