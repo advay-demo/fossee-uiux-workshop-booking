@@ -102,13 +102,13 @@ Transforming a basic, table-based UI into a modern design while keeping Django t
 
 ### 🔐 Home Page
 
-| <img src="docs/images/login_after.png" width="400"/> |
+| <img src="docs/images/home.png.jpeg" width="800"/> |
 
 ### 🔐 Login Page
 
 | Before | After |
 |--------|-------|
-|<img src="docs/images/login_before.png" width="400"/> | <img src="docs/images/login_after.png" width="400"/> |
+|<img src="docs/images/login_before.png" width="400"/> | <img src="docs/images/login_after.png.jpeg" width="400"/> |
 
 ---
 
@@ -116,7 +116,7 @@ Transforming a basic, table-based UI into a modern design while keeping Django t
 
 | Before | After |
 |--------|-------|
-|<img src="docs/images/register_before.png" width="400"/> | <img src="docs/images/login_after.png" width="400"/> |
+|<img src="docs/images/register_before.png" width="400"/> | <img src="docs/images/register_after.jpeg" width="400"/> |
 
 ---
 
@@ -124,7 +124,7 @@ Transforming a basic, table-based UI into a modern design while keeping Django t
 
 | Before | After |
 |--------|-------|
-|<img src="docs/images/stats_before.png" width="400"/> | <img src="docs/images/login_after.png" width="400"/> |
+|<img src="docs/images/stats_before.png" width="400"/> | <img src="docs/images/stats_after.png.jpeg" width="400"/> |
 
 ---
 
@@ -132,13 +132,13 @@ Transforming a basic, table-based UI into a modern design while keeping Django t
 
 | Before | After |
 |--------|-------|
-|<img src="docs/images/forgot_before.png" width="400"/> | <img src="docs/images/login_after.png" width="400"/> |
+|<img src="docs/images/forgot_before.png" width="400"/> | <img src="docs/images/forgot_after.png.jpeg" width="400"/> |
 
 ---
 
 ### 📧 Email Confirmation Page
 
-| <img src="docs/images/login_after.png" width="400"/> |
+| <img src="docs/images/confirm.png.jpeg" width="800"/> |
 
 ---
 
